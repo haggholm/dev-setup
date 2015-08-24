@@ -1,0 +1,20 @@
+#!/bin/bash
+
+GHC_VERSION=7.10.2
+CABAL_VERSION=1.22
+HAPPY_VERSION=1.19.5
+ALEX_VERSION=3.1.4
+
+sudo add-apt-repository -y ppa:hvr/ghc
+sudo apt-get update
+sudo apt-get install cabal-install-$CABAL_VERSION ghc-$GHC_VERSION-prof ghc-$GHC_VERSION-htmldocs happy-$HAPPY_VERSION alex-$ALEX_VERSION
+
+echo "# Automatic \$PATH for ghc-${GHC_VERSION}, cabal-${CABAL_VERSION}, happy-${HAPPY_VERSION}, alex-${ALEX_VERSION}" \
+  | sudo tee --append /etc/profile
+echo "PATH=\$PATH:/opt/cabal/${CABAL_VERSION}/bin:/opt/ghc/${GHC_VERSION}/bin:/opt/happy/${HAPPY_VERSION}/bin:/opt/alex/${ALEX_VERSION}/bin" \
+  | sudo tee --append /etc/profile
+source /etc/profile
+
+cabal update
+cabal install gtk2hs-buildtools
+cabal install leksah
