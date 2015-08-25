@@ -18,3 +18,9 @@ source /etc/profile
 cabal update
 cabal install gtk2hs-buildtools
 cabal install leksah
+
+# http://www.quora.com/What-is-missing-from-Haskell/answer/Tikhon-Jelvis
+cabal install lens
+
+# http://www.quora.com/What-are-some-of-the-most-useful-Haskell-packages
+cabal install eason text async esqueleto conduit
