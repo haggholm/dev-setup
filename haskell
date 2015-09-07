@@ -15,6 +15,7 @@ echo "PATH=\$PATH:/opt/cabal/${CABAL_VERSION}/bin:/opt/ghc/${GHC_VERSION}/bin:/o
   | sudo tee --append /etc/profile
 source /etc/profile
 
+sudo apt-get install libcairo2-dev libpango1.0-dev libgtk-3-dev libwebkitgtk-3.0-dev libgtksourceview-3.0-dev
 cabal update
 cabal install gtk2hs-buildtools
 cabal install leksah
@@ -24,3 +25,9 @@ cabal install lens
 
 # http://www.quora.com/What-are-some-of-the-most-useful-Haskell-packages
 cabal install eason text async esqueleto conduit
+
+# For the Atom editor
+cabal install ghc-mod hlint stylish-haskell
+
+
+# What about https://www.stackage.org/ ? Looks promising
